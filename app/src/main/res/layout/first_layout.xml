@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--定义一个按钮-->
+    <!--第一行-->
+    <!--@+id/id_name表示在xml中定义一个id-->
+    <!--在xml中引用一个id使用@id/id_name-->
+    <!--第二行-->
+    <!--定义元素的宽度-->、
+    <!--match_parent表示让此元素和父元素一样宽-->
+    <!--第三行-->
+    <!--定义高度-->
+    <!--wrap_content表示高度只要能够刚好容下里面的内容就好-->
+    <!--第四行定义了按钮里面显示的内容里面显示的-->
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button1"/>
+
+</LinearLayout>
