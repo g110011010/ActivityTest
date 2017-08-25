@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,13 +53,36 @@ public class FirstActivity extends AppCompatActivity {
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                创建一个Intent对象，其中第一个参数表适用于启动活动的上下文，第二个参数用于表示要启动的活动
-                Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
+//                创建一个Intent对象，使用隐式intent启动一个启动一个活动
+                Intent intent=new Intent("android.intent.category.DEFAULT");
+//                添加对应的category，此处的添加可以省略，因为添加的是默认的category
+                intent.addCategory("android.intent.category.DEFAULT");
+//                向下一个action传递数据，第一个参数是键，用于从后面Intent中取值，第二个参数时真正要传递的数据
+                intent.putExtra("extra_data","here is the message to next action");
 //                使用此方法启动另外一个活动
-                startActivity(intent);
-                finish();
+
+                //第二个参数是请求码可以自定义，只要唯一就好，用于之后的回调中判断数据的来源
+//                使用此方法启动一个活动，在启动的活动被销毁的时候会调用本活动的onActivityResult()来接受反悔的数据
+                startActivityForResult(intent,1);
             }
         });
+    }
+    /*
+    * 使用startActivityForResult()方法启动新活动，在新活动销毁的时候自动调用此方法，用于获取新活动返回的数据
+    * @param requestCode 启动活动时传入的请求码
+    * @param resultCode 返回数据时传入的处理结果
+    * @param data 带有返回数据的Intent对象*/
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        switch (requestCode){
+            case 1:
+                if(resultCode==RESULT_OK){
+                    String returnMessage=data.getStringExtra("data_return");
+                    Log.d("FirstActivity", returnMessage);
+                }
+                break;
+            default:
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

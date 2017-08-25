@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!-- 所有的活动都要在此文件下注册才能够生效 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sf.activitytest">
+
     <!-- 活动的注册声明要放在application标签内 -->
     <application
         android:allowBackup="true"
@@ -30,16 +31,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity"
+        <activity
+            android:name=".SecondActivity"
             android:label="this is second activity">
             <intent-filter>
-                <!--指明了当前活动能够响应com.example.activitytest.ACTION_START这个action-->
-                <action android:name="com.example.activitytest.ACTION_START"/>
-                <!--更精确的指明了当前活动所能够响应的Intent还可能带有category.-->
-                <!--只有<action><category>中的内容能够同时匹配上Intent中指定的action和category，这个活动才能够响应intent-->
-                <!--这里指定的是一个默认的category，startActivity()会自动将这个category添加到intent中-->
-                <category android:name="android.intent.category.DEFAULT"/>
+
+                <!-- 指明了当前活动能够响应com.example.activitytest.ACTION_STAcom.example.activitytest.ACTION_STARTRT这个action -->
+                <action android:name="android.intent.category.DEFAULT" />
+                <!-- 更精确的指明了当前活动所能够响应的Intent还可能带有category. -->
+                <!-- 只有<action><category>中的内容能够同时匹配上Intent中指定的action和category，这个活动才能够响应intent -->
+                <!-- 这里指定的是一个默认的category，startActivity()会自动将这个category添加到intent中 -->
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ThirdActivity">
+        <!--在<intent-filter>标签中使用<data>标签可以更清楚的指明当前活动能够响应什么类型的数据-->
+            <intent-filter>
+                    <action android:name="android.intent.action.VIEW"/>
+                    <category android:name="android.intent.category.DEFAULT"/>
+                <!--android:scheme  用于指定数据的协议部分（geo 表示显示地理位置，tel表示拨打电话）
+                android:host  用于指定数据的主机名部分如“www.baidu.com”
+                android:port  用于指定数据的端口部分
+                android:path  用于指定主机名和端口之后的部分
+                 android:mimeType 用于指定可以处理的数据类型，允许使用通配符的方式进行指定-->
+                    <data android:scheme="http" />
+             </intent-filter>
         </activity>
     </application>
 

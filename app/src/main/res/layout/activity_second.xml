@@ -15,5 +15,10 @@
         android:layout_height="match_parent"
         android:id="@+id/back_activity1"
         android:text="back"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="百度一下"
+        android:id="@+id/baidu"/>
 
 </android.support.constraint.ConstraintLayout>
