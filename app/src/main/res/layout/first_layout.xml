@@ -14,9 +14,19 @@
     <!--wrap_content表示高度只要能够刚好容下里面的内容就好-->
     <!--第四行定义了按钮里面显示的内容里面显示的-->
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button1" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:text="back"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="start second activity"
+        android:id="@+id/button4"/>
 
 </LinearLayout>

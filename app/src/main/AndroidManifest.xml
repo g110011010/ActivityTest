@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--所有的活动都要在此文件下注册才能够生效-->
+<?xml version="1.0" encoding="utf-8"?><!-- 所有的活动都要在此文件下注册才能够生效 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sf.activitytest">
-<!--活动的注册声明要放在application标签内-->
+    <!-- 活动的注册声明要放在application标签内 -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,19 +9,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--注册自己创建的活动，Android Stdio会自动帮忙注册生成-->
-        <!--android.name指定了具体注册的是哪一个活动-->
-        <!--.FirstActivity是com.example.sf.activitytest.FirstActivity的缩写，由于在最外层的manifest标签中已经通过
-        package属性指明了程序的包名-->
-        <!--android:label属性指明了活动中标题栏的内容-->
-        <!--给主活动指定的label不仅会成为标题栏的内容，还会成为启动器中应用程序显示的名字-->
-        <activity android:name=".FirstActivity"
+
+        <!-- 注册自己创建的活动，Android Stdio会自动帮忙注册生成 -->
+        <!-- android.name指定了具体注册的是哪一个活动 -->
+        <!--
+        .FirstActivity是com.example.sf.activitytest.FirstActivity的缩写，由于在最外层的manifest标签中已经通过
+        package属性指明了程序的包名
+        -->
+        <!-- android:label属性指明了活动中标题栏的内容 -->
+        <!-- 给主活动指定的label不仅会成为标题栏的内容，还会成为启动器中应用程序显示的名字 -->
+        <activity
+            android:name=".FirstActivity"
             android:label="This is FirstActivity">
-            <!--配置主活动-->
-            <!--如果应用程序没有配置任何一个活动作为主活动，这个程序仍然是可以正常安装的，只是你无法再启动器中看到或者打开这个程序-->
+
+            <!-- 配置主活动 -->
+            <!-- 如果应用程序没有配置任何一个活动作为主活动，这个程序仍然是可以正常安装的，只是你无法再启动器中看到或者打开这个程序 -->
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SecondActivity"
+            android:label="this is second activity">
+            <intent-filter>
+                <!--指明了当前活动能够响应com.example.activitytest.ACTION_START这个action-->
+                <action android:name="com.example.activitytest.ACTION_START"/>
+                <!--更精确的指明了当前活动所能够响应的Intent还可能带有category.-->
+                <!--只有<action><category>中的内容能够同时匹配上Intent中指定的action和category，这个活动才能够响应intent-->
+                <!--这里指定的是一个默认的category，startActivity()会自动将这个category添加到intent中-->
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
     </application>
