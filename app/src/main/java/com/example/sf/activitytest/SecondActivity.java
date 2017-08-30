@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +17,13 @@ public class SecondActivity extends AppCompatActivity {
 //                获取传入的数据
         String message=getString.getStringExtra("extra_data");
         System.out.println(message);
-//                输出获取的数据到日志
+//                输出获取的数据到日志a
+        /**
+        *
+        *@param
+        *@return
+        *@author
+        */
         Log.d("SecondActivity", message);
         setContentView(R.layout.activity_second);
         findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
